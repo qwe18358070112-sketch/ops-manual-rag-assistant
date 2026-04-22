@@ -3,6 +3,15 @@
 面向政企驻场运维场景的知识库问答系统。  
 项目目标不是只做“文档搜索”，而是把分散在操作手册、应急预案、周报、月报中的资料整理成一个可上传、可检索、可问答、可追溯、可迁移的运维知识助手。
 
+## English Summary
+
+Knowledge-base assistant for government-enterprise onsite IT operations.
+
+- Ingests manuals, emergency plans, weekly reports, and monthly reports
+- Supports document upload, indexing, hybrid retrieval, cited answers, and case replay
+- Designed as more than a search tool: it returns direct answers, action steps, and traceable sources
+- Tech focus: Python, FastAPI, SQLite FTS, TF-IDF retrieval, RAG-style answering, local deployment and migration
+
 ## 项目定位
 
 这个项目解决的是运维现场常见的 4 个问题：
