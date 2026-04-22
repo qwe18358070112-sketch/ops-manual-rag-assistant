@@ -4,4 +4,17 @@ __pycache__/
 *.pyc
 .pytest_cache/
 data/
+!data/
+data/*
+!data/manifests/
+data/manifests/*
+!data/manifests/seed_documents.json
+!data/raw/
+data/raw/*
+!data/raw/demo/
+data/raw/demo/*
+!data/raw/demo/patrol_assistant_case.txt
+!data/raw/demo/video_platform_login_case.txt
+!data/raw/demo/video_platform_manual.txt
+!data/raw/demo/vulnerability_followup_case.txt
 ops_manual_rag_assistant.egg-info/

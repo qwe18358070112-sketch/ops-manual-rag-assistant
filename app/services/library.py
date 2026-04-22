@@ -125,7 +125,22 @@ def init_library_store(settings: Settings | None = None) -> None:
     conn.close()
     seed_library_from_manifest(settings)
     refresh_document_metrics(settings)
-    sync_ingestion_summary(settings)
+    if _needs_seed_bootstrap(settings):
+        rebuild_all_documents(settings)
+    else:
+        sync_ingestion_summary(settings)
+
+
+def _needs_seed_bootstrap(settings: Settings | None = None) -> bool:
+    settings = settings or get_settings()
+    if not settings.manifest_path.exists():
+        return False
+    documents = list_documents(limit=5000, settings=settings)
+    if not documents:
+        return False
+    if any(int(document.get('chunk_count', 0)) > 0 for document in documents):
+        return False
+    return True
 
 
 def seed_library_from_manifest(settings: Settings | None = None) -> int:

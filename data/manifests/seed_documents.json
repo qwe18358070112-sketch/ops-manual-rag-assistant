@@ -1,0 +1,48 @@
+[
+  {
+    "doc_id": "demo-manual-001",
+    "title": "视频融合赋能平台操作手册（公开演示版）",
+    "source_type": "official_manual",
+    "system_name": "视频平台",
+    "file_type": "txt",
+    "file_path": "data/raw/demo/video_platform_manual.txt",
+    "tags": ["视频平台", "资源共享", "官方手册"],
+    "notes": "公开仓库内置的最小演示手册数据。"
+  },
+  {
+    "doc_id": "demo-case-001",
+    "title": "视频平台客户端登录异常周报（公开演示版）",
+    "source_type": "weekly_report",
+    "system_name": "政企驻场运维",
+    "file_type": "txt",
+    "file_path": "data/raw/demo/video_platform_login_case.txt",
+    "date_start": "2026-04-03",
+    "date_end": "2026-04-03",
+    "tags": ["周报", "客户端登录", "视频平台"],
+    "notes": "公开仓库内置的历史案例数据。"
+  },
+  {
+    "doc_id": "demo-case-002",
+    "title": "漏洞整改跟进月报（公开演示版）",
+    "source_type": "monthly_report",
+    "system_name": "政企驻场运维",
+    "file_type": "txt",
+    "file_path": "data/raw/demo/vulnerability_followup_case.txt",
+    "date_start": "2026-03-20",
+    "date_end": "2026-03-20",
+    "tags": ["月报", "漏洞整改", "政企驻场运维"],
+    "notes": "公开仓库内置的漏洞整改案例数据。"
+  },
+  {
+    "doc_id": "demo-case-003",
+    "title": "视频平台客户端轮询助手开发周报（公开演示版）",
+    "source_type": "weekly_report",
+    "system_name": "政企驻场运维",
+    "file_type": "txt",
+    "file_path": "data/raw/demo/patrol_assistant_case.txt",
+    "date_start": "2026-04-08",
+    "date_end": "2026-04-08",
+    "tags": ["周报", "轮询助手", "视频平台"],
+    "notes": "公开仓库内置的轮询助手专题案例数据。"
+  }
+]
