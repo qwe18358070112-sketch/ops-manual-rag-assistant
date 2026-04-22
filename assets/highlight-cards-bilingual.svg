@@ -1,0 +1,48 @@
+<svg width="1600" height="860" viewBox="0 0 1600 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="860" rx="28" fill="#0A1220"/>
+  <text x="56" y="74" fill="#F8FBFF" font-size="38" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">项目亮点 / Project Highlights</text>
+
+  <g>
+    <rect x="56" y="120" width="716" height="300" rx="28" fill="#101C33" stroke="#2D4E86" stroke-width="2"/>
+    <text x="96" y="182" fill="#EAF1FF" font-size="30" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">真实资料源 / Real Operational Data</text>
+    <text x="96" y="232" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">知识源来自真实操作手册、应急预案、周报和月报，不是虚构样例。</text>
+    <text x="96" y="266" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">Uses real manuals, emergency plans, weekly reports, and monthly reports.</text>
+    <rect x="96" y="304" width="272" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="126" y="334" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">真实场景 / Real Data</text>
+    <rect x="384" y="304" width="282" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="412" y="334" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">运维导向 / Ops-driven</text>
+  </g>
+
+  <g>
+    <rect x="828" y="120" width="716" height="300" rx="28" fill="#101C33" stroke="#2D4E86" stroke-width="2"/>
+    <text x="868" y="182" fill="#EAF1FF" font-size="30" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">双模式问答 / Dual Retrieval Modes</text>
+    <text x="868" y="232" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">区分“怎么操作”和“以前怎么处理过”，支持手册问答与历史案例检索。</text>
+    <text x="868" y="266" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">Separates manual guidance from historical incident/case retrieval.</text>
+    <rect x="868" y="304" width="300" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="896" y="334" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">manual_qa 模式</text>
+    <rect x="1184" y="304" width="260" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="1212" y="334" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">case_search 模式</text>
+  </g>
+
+  <g>
+    <rect x="56" y="476" width="716" height="300" rx="28" fill="#101C33" stroke="#2D4E86" stroke-width="2"/>
+    <text x="96" y="538" fill="#EAF1FF" font-size="30" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">答案可追溯 / Traceable Answers</text>
+    <text x="96" y="588" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">不仅返回结果片段，还给出直接回答、处理步骤、补充建议和来源回溯。</text>
+    <text x="96" y="622" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">Returns direct answers, action steps, and links back to original sources.</text>
+    <rect x="96" y="660" width="274" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="126" y="690" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">直接回答 / Answer</text>
+    <rect x="386" y="660" width="278" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="414" y="690" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">引用回溯 / Traceability</text>
+  </g>
+
+  <g>
+    <rect x="828" y="476" width="716" height="300" rx="28" fill="#101C33" stroke="#2D4E86" stroke-width="2"/>
+    <text x="868" y="538" fill="#EAF1FF" font-size="30" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">资料库与迁移 / Library + Migration</text>
+    <text x="868" y="588" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">支持资料上传、增量索引、全量重建、迁移包导入导出和局域网共享。</text>
+    <text x="868" y="622" fill="#AFC0E0" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">Supports uploads, indexing, bundle export/import, and shareable deployment.</text>
+    <rect x="868" y="660" width="276" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="896" y="690" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">资料管理 / Library</text>
+    <rect x="1160" y="660" width="292" height="46" rx="12" fill="#EAF1FF"/>
+    <text x="1188" y="690" fill="#1747A6" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">迁移部署 / Migration</text>
+  </g>
+</svg>

@@ -23,6 +23,10 @@ Knowledge-base assistant for government-enterprise onsite IT operations.
 
 我把这些问题做成了一个完整系统，而不只是一个检索脚本。
 
+## 项目亮点卡片 / Bilingual Highlight Cards
+
+![政企运维知识库项目亮点卡片](assets/highlight-cards-bilingual.svg)
+
 ## 首页图示
 
 ### 知识问答页面截图
