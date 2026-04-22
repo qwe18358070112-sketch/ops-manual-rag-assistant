@@ -1,0 +1,61 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#08111F"/>
+  <text x="56" y="70" fill="#F8FBFF" font-size="36" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">系统架构</text>
+
+  <rect x="56" y="116" width="1488" height="160" rx="24" fill="#0F1C33" stroke="#244878"/>
+  <text x="88" y="162" fill="#F8FBFF" font-size="28" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">界面与访问层</text>
+  <rect x="92" y="192" width="280" height="58" rx="14" fill="#EEF4FF"/>
+  <rect x="404" y="192" width="280" height="58" rx="14" fill="#EEF4FF"/>
+  <rect x="716" y="192" width="280" height="58" rx="14" fill="#EEF4FF"/>
+  <rect x="1028" y="192" width="220" height="58" rx="14" fill="#EEF4FF"/>
+  <rect x="1280" y="192" width="228" height="58" rx="14" fill="#EEF4FF"/>
+  <text x="150" y="228" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">/app 页面</text>
+  <text x="470" y="228" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">/search API</text>
+  <text x="780" y="228" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">/catalog / timeline</text>
+  <text x="1060" y="228" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">登录鉴权</text>
+  <text x="1334" y="228" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">访问日志</text>
+
+  <rect x="56" y="316" width="1488" height="248" rx="24" fill="#0F1C33" stroke="#244878"/>
+  <text x="88" y="362" fill="#F8FBFF" font-size="28" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">服务层</text>
+  <rect x="92" y="394" width="280" height="132" rx="18" fill="#12284B"/>
+  <rect x="404" y="394" width="280" height="132" rx="18" fill="#12284B"/>
+  <rect x="716" y="394" width="280" height="132" rx="18" fill="#12284B"/>
+  <rect x="1028" y="394" width="220" height="132" rx="18" fill="#12284B"/>
+  <rect x="1280" y="394" width="228" height="132" rx="18" fill="#12284B"/>
+  <text x="164" y="440" fill="#EAF1FF" font-size="24" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">library.py</text>
+  <text x="120" y="476" fill="#AFC0E0" font-size="20" font-family="Arial, PingFang SC, Microsoft YaHei">资料上传 / 导出 / 重建索引</text>
+  <text x="460" y="440" fill="#EAF1FF" font-size="24" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">answering.py</text>
+  <text x="438" y="476" fill="#AFC0E0" font-size="20" font-family="Arial, PingFang SC, Microsoft YaHei">答案归纳 / 引用 / 步骤生成</text>
+  <text x="760" y="440" fill="#EAF1FF" font-size="24" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">case_views.py</text>
+  <text x="752" y="476" fill="#AFC0E0" font-size="20" font-family="Arial, PingFang SC, Microsoft YaHei">时间轴 / 专题 / 案例详情</text>
+  <text x="1052" y="440" fill="#EAF1FF" font-size="24" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">manual_views.py</text>
+  <text x="1058" y="476" fill="#AFC0E0" font-size="20" font-family="Arial, PingFang SC, Microsoft YaHei">手册章节详情 / 原文</text>
+  <text x="1310" y="440" fill="#EAF1FF" font-size="24" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">library_bundle.py</text>
+  <text x="1322" y="476" fill="#AFC0E0" font-size="20" font-family="Arial, PingFang SC, Microsoft YaHei">迁移包导入导出</text>
+
+  <rect x="56" y="604" width="1488" height="238" rx="24" fill="#0F1C33" stroke="#244878"/>
+  <text x="88" y="650" fill="#F8FBFF" font-size="28" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">数据与索引层</text>
+  <rect x="92" y="686" width="320" height="110" rx="16" fill="#EEF4FF"/>
+  <rect x="444" y="686" width="320" height="110" rx="16" fill="#EEF4FF"/>
+  <rect x="796" y="686" width="320" height="110" rx="16" fill="#EEF4FF"/>
+  <rect x="1148" y="686" width="360" height="110" rx="16" fill="#EEF4FF"/>
+  <text x="150" y="732" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">raw/uploads + manifests</text>
+  <text x="154" y="766" fill="#4B5B73" font-size="18" font-family="Arial, PingFang SC, Microsoft YaHei">原始资料文件</text>
+  <text x="520" y="732" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">extracted + chunks</text>
+  <text x="536" y="766" fill="#4B5B73" font-size="18" font-family="Arial, PingFang SC, Microsoft YaHei">解析与切块结果</text>
+  <text x="862" y="732" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">indexes + FTS</text>
+  <text x="874" y="766" fill="#4B5B73" font-size="18" font-family="Arial, PingFang SC, Microsoft YaHei">检索索引</text>
+  <text x="1220" y="732" fill="#1747A6" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">metadata.sqlite3 + access.log</text>
+  <text x="1244" y="766" fill="#4B5B73" font-size="18" font-family="Arial, PingFang SC, Microsoft YaHei">资料库元数据与审计</text>
+
+  <g stroke="#6FA3FF" stroke-width="4" stroke-linecap="round">
+    <path d="M514 250V316"/>
+    <path d="M808 250V316"/>
+    <path d="M1102 250V316"/>
+    <path d="M1400 250V316"/>
+    <path d="M252 526V686"/>
+    <path d="M604 526V686"/>
+    <path d="M956 526V686"/>
+    <path d="M1328 526V686"/>
+  </g>
+</svg>

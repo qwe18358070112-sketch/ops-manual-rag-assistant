@@ -14,6 +14,20 @@
 
 我把这些问题做成了一个完整系统，而不只是一个检索脚本。
 
+## 首页图示
+
+### 知识问答页面截图
+
+![政企运维知识库问答页面截图](assets/ui-search.png)
+
+### 问答链路流程图
+
+![政企运维知识库问答流程图](assets/flow-overview.svg)
+
+### 系统架构图
+
+![政企运维知识库系统架构图](assets/architecture-overview.svg)
+
 ## 现在已经能做什么
 
 - 支持 `docx / pdf / xlsx / txt` 导入

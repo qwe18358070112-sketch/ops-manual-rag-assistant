@@ -1,0 +1,49 @@
+<svg width="1600" height="560" viewBox="0 0 1600 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="560" rx="24" fill="#0B1220"/>
+  <text x="56" y="76" fill="#F8FBFF" font-size="36" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">问答链路流程</text>
+  <g font-family="Arial, PingFang SC, Microsoft YaHei" font-size="24">
+    <rect x="60" y="154" width="230" height="124" rx="20" fill="#EEF4FF"/>
+    <text x="118" y="222" fill="#1747A6" font-weight="700">用户提问</text>
+    <text x="106" y="254" fill="#42526B">输入运维问题或故障场景</text>
+
+    <rect x="360" y="154" width="250" height="124" rx="20" fill="#EEF4FF"/>
+    <text x="402" y="222" fill="#1747A6" font-weight="700">资料检索</text>
+    <text x="392" y="254" fill="#42526B">手册 / 案例双模式召回</text>
+
+    <rect x="680" y="154" width="250" height="124" rx="20" fill="#EEF4FF"/>
+    <text x="724" y="222" fill="#1747A6" font-weight="700">答案归纳</text>
+    <text x="706" y="254" fill="#42526B">直接回答 + 步骤 + 建议</text>
+
+    <rect x="1000" y="154" width="250" height="124" rx="20" fill="#EEF4FF"/>
+    <text x="1040" y="222" fill="#1747A6" font-weight="700">结果回溯</text>
+    <text x="1048" y="254" fill="#42526B">章节详情 / 案例详情 / 原文</text>
+
+    <rect x="1320" y="154" width="220" height="124" rx="20" fill="#EEF4FF"/>
+    <text x="1372" y="222" fill="#1747A6" font-weight="700">资料复用</text>
+    <text x="1360" y="254" fill="#42526B">专题复盘 / 时间轴复查</text>
+
+    <rect x="520" y="356" width="300" height="124" rx="20" fill="#10203C" stroke="#2B7FFF" stroke-width="2"/>
+    <text x="572" y="416" fill="#EAF1FF" font-weight="700">资料入库</text>
+    <text x="548" y="450" fill="#AFC0E0">上传文档 → 解析 → 切块 → 建索引</text>
+
+    <rect x="920" y="356" width="320" height="124" rx="20" fill="#10203C" stroke="#2B7FFF" stroke-width="2"/>
+    <text x="986" y="416" fill="#EAF1FF" font-weight="700">迁移与共享</text>
+    <text x="958" y="450" fill="#AFC0E0">导出迁移包 / 外置数据目录 / 局域网访问</text>
+  </g>
+  <g stroke="#6FA3FF" stroke-width="4" stroke-linecap="round">
+    <path d="M290 216H360"/>
+    <path d="M610 216H680"/>
+    <path d="M930 216H1000"/>
+    <path d="M1250 216H1320"/>
+    <path d="M560 278V320"/>
+    <path d="M1130 278V320"/>
+  </g>
+  <g fill="#6FA3FF">
+    <path d="M348 206L360 216L348 226"/>
+    <path d="M668 206L680 216L668 226"/>
+    <path d="M988 206L1000 216L988 226"/>
+    <path d="M1308 206L1320 216L1308 226"/>
+    <path d="M550 308L560 320L570 308"/>
+    <path d="M1120 308L1130 320L1140 308"/>
+  </g>
+</svg>
