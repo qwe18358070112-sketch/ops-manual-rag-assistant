@@ -5,6 +5,10 @@
 面向政企驻场运维场景的知识库问答系统。
 项目目标不是只做“文档搜索”，而是把分散在操作手册、应急预案、周报、月报中的资料整理成一个可上传、可检索、可问答、可追溯、可迁移的运维知识助手。
 
+## 项目演示预览 / Demo Preview
+
+![政企运维知识库项目演示预览](assets/demo-preview.gif)
+
 ## English Summary
 
 Knowledge-base assistant for government-enterprise onsite IT operations.
