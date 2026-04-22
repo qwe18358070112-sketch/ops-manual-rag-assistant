@@ -1,0 +1,48 @@
+<svg width="1600" height="640" viewBox="0 0 1600 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="640" fill="#F4F8FF"/>
+  <rect width="1600" height="640" fill="url(#bg)"/>
+  <circle cx="1380" cy="120" r="220" fill="#3B82F6" opacity="0.12"/>
+  <circle cx="1210" cy="480" r="170" fill="#2563EB" opacity="0.08"/>
+
+  <rect x="72" y="72" width="1456" height="496" rx="34" fill="rgba(255,255,255,0.78)" stroke="rgba(59,130,246,0.16)" stroke-width="2"/>
+  <text x="118" y="162" fill="#4A6A9A" font-size="22" letter-spacing="3" font-family="Arial, PingFang SC, Microsoft YaHei">GOVERNMENT ENTERPRISE OPS / KNOWLEDGE ASSISTANT</text>
+  <text x="118" y="252" fill="#183153" font-size="70" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">政企运维知识库问答助手</text>
+  <text x="118" y="314" fill="#34527C" font-size="28" font-family="Arial, PingFang SC, Microsoft YaHei">把手册、预案、周报、月报整合成可上传、可检索、可问答、可迁移的运维知识助手</text>
+  <text x="118" y="356" fill="#577499" font-size="24" font-family="Arial, PingFang SC, Microsoft YaHei">FastAPI · SQLite FTS · TF-IDF Retrieval · Cited Answers · Local Deployment</text>
+
+  <rect x="118" y="404" width="214" height="46" rx="23" fill="#2563EB"/>
+  <rect x="348" y="404" width="208" height="46" rx="23" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.14)"/>
+  <rect x="572" y="404" width="244" height="46" rx="23" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.14)"/>
+  <text x="158" y="434" fill="#FFFFFF" font-size="22" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">真实运维资料</text>
+  <text x="390" y="434" fill="#1D4ED8" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">双模式检索</text>
+  <text x="610" y="434" fill="#1D4ED8" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">共享与迁移能力</text>
+
+  <g>
+    <rect x="978" y="118" width="452" height="392" rx="30" fill="#FFFFFF" stroke="rgba(59,130,246,0.18)" stroke-width="2"/>
+    <rect x="1012" y="150" width="384" height="62" rx="18" fill="#F5F9FF" stroke="#DCEBFF"/>
+    <text x="1042" y="189" fill="#537197" font-size="22" font-family="Arial, PingFang SC, Microsoft YaHei">视联网会议蓝屏时先查什么</text>
+    <rect x="1314" y="162" width="66" height="38" rx="12" fill="#2563EB"/>
+    <text x="1332" y="188" fill="#FFFFFF" font-size="18" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">检索</text>
+
+    <rect x="1012" y="234" width="384" height="92" rx="20" fill="#F7FAFF" stroke="#E3EEFF"/>
+    <text x="1040" y="272" fill="#2563EB" font-size="20" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">直接回答</text>
+    <text x="1040" y="304" fill="#4B5B73" font-size="18" font-family="Arial, PingFang SC, Microsoft YaHei">先确认视频源链路、HDMI 连接和主屏状态，再检查会议软件与信号切换。</text>
+
+    <rect x="1012" y="344" width="182" height="118" rx="18" fill="#F7FAFF" stroke="#E3EEFF"/>
+    <rect x="1214" y="344" width="182" height="118" rx="18" fill="#F7FAFF" stroke="#E3EEFF"/>
+    <text x="1040" y="382" fill="#2563EB" font-size="18" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">建议步骤</text>
+    <text x="1040" y="414" fill="#5F718C" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei">1. 检查设备与线缆</text>
+    <text x="1040" y="440" fill="#5F718C" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei">2. 检查软件与信号源</text>
+    <text x="1242" y="382" fill="#2563EB" font-size="18" font-weight="700" font-family="Arial, PingFang SC, Microsoft YaHei">引用来源</text>
+    <text x="1242" y="414" fill="#5F718C" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei">手册章节 · 案例详情</text>
+    <text x="1242" y="440" fill="#5F718C" font-size="16" font-family="Arial, PingFang SC, Microsoft YaHei">原始操作手册</text>
+  </g>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDF4FF"/>
+      <stop offset="0.52" stop-color="#F7FAFF"/>
+      <stop offset="1" stop-color="#EEF3FF"/>
+    </linearGradient>
+  </defs>
+</svg>
