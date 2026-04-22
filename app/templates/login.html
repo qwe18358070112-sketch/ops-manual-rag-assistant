@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card login-card">
+  <div class="section-heading">管理员登录</div>
+  {% if error %}<div class="notice danger">{{ error }}</div>{% endif %}
+  <form action="/login" method="post" class="form-grid cols-1 narrow-form">
+    <input type="hidden" name="next" value="{{ next }}" />
+    <label><span>账号</span><input type="text" name="username" value="admin" required /></label>
+    <label><span>密码</span><input type="password" name="password" required /></label>
+    <button class="btn btn-primary" type="submit">登录</button>
+  </form>
+</section>
+{% endblock %}

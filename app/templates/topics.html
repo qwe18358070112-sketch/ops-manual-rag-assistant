@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <div class="section-heading">专题聚合筛选</div>
+  <form action="/app/topics" method="get" class="form-grid cols-5">
+    <label><span>系统</span><select name="system_name"><option value="">全部系统</option>{% for option in filter_options.system_names %}<option value="{{ option }}" {% if filters.system_name == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>来源</span><select name="source_type"><option value="">全部来源</option>{% for option in filter_options.source_types %}<option value="{{ option }}" {% if filters.source_type == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>标签</span><select name="tag"><option value="">全部标签</option>{% for option in filter_options.tags %}<option value="{{ option }}" {% if filters.tag == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>开始日期</span><input type="date" name="date_from" value="{{ filters.date_from }}" /></label>
+    <label><span>结束日期</span><input type="date" name="date_to" value="{{ filters.date_to }}" /></label>
+    <div class="button-row full"><button class="btn btn-primary" type="submit">查看专题</button></div>
+  </form>
+</section>
+<section class="topic-grid">
+  {% for topic in topics %}
+  <article class="card topic-card">
+    <div class="topic-head"><strong>{{ topic.tag }}</strong><span class="pill accent">{{ topic.count }} 条</span></div>
+    <div class="muted">最近更新：{{ topic.latest_date or '—' }}</div>
+    <div class="list-stack compact top-gap">
+      {% for sample in topic.samples %}
+      <div class="list-item plain">
+        <div>
+          <strong>{{ sample.section_title }}</strong>
+          <div class="muted">{{ sample.system_name }} · {{ sample.date_end or sample.date_start }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="button-row top-gap"><a class="btn btn-secondary" href="{{ topic.detail_url }}">专题详情</a><a class="btn btn-ghost" href="{{ topic.search_url }}">联动问答</a></div>
+  </article>
+  {% else %}
+  <div class="card empty-state">当前没有专题数据。</div>
+  {% endfor %}
+</section>
+{% endblock %}

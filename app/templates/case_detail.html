@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card detail-card">
+  <div class="section-heading">案例详情</div>
+  <h2>{{ detail.section_title }}</h2>
+  <div class="muted">{{ detail.title }} · {{ detail.system_name }} · {{ detail.date_start }} ~ {{ detail.date_end }}</div>
+  <div class="tag-row top-gap">{% for tag in detail.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+  <div class="detail-body">{% for line in detail.content.split('\n') %}<p>{{ line }}</p>{% endfor %}</div>
+  <div class="button-row top-gap"><a class="btn btn-primary" href="{{ detail.search_url }}">以当前案例进入问答</a><a class="btn btn-ghost" href="/app/timeline">返回时间轴</a></div>
+</section>
+{% endblock %}

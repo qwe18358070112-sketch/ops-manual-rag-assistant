@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <div class="section-heading">专题概览</div>
+  <div class="topic-head"><strong>{{ detail.tag }}</strong><span class="pill accent">{{ detail.count }} 条案例</span></div>
+  <div class="muted">最近更新：{{ detail.latest_date or '—' }}</div>
+  <div class="button-row top-gap"><a class="btn btn-ghost" href="{{ back_url }}">返回专题总览</a></div>
+</section>
+<section class="result-stack">
+  {% for row in detail.entries %}
+  <article class="card result-item plain-card">
+    <div class="result-head"><strong>{{ row.section_title }}</strong><span class="muted">{{ row.date_start }} ~ {{ row.date_end }}</span></div>
+    <div class="muted">{{ row.system_name }} · {{ row.source_type }}</div>
+    <p>{{ row.summary }}</p>
+    <div class="tag-row">{% for tag in row.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+    <div class="button-row top-gap"><a class="btn btn-secondary" href="{{ row.detail_url }}">案例详情</a><a class="btn btn-ghost" href="{{ row.search_url }}">联动问答</a></div>
+  </article>
+  {% else %}
+  <div class="card empty-state">当前专题下没有案例。</div>
+  {% endfor %}
+</section>
+{% endblock %}

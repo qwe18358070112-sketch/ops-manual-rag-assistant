@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card search-panel">
+  <form action="/app/search" method="get" class="search-form-grid">
+    <div class="search-input-row">
+      <input class="search-input" type="text" name="q" value="{{ query }}" placeholder="例如：视频平台资源共享怎么操作" />
+      <button class="btn btn-primary" type="submit">开始检索</button>
+    </div>
+    <div class="form-grid cols-6">
+      <label>
+        <span>模式</span>
+        <select name="search_mode">
+          <option value="all" {% if search_mode == 'all' %}selected{% endif %}>全部</option>
+          <option value="manual_qa" {% if search_mode == 'manual_qa' %}selected{% endif %}>手册问答</option>
+          <option value="case_search" {% if search_mode == 'case_search' %}selected{% endif %}>历史案例</option>
+        </select>
+      </label>
+      <label>
+        <span>系统</span>
+        <select name="system_name">
+          <option value="">全部系统</option>
+          {% for option in filter_options.system_names %}
+          <option value="{{ option }}" {% if system_name == option %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        <span>来源类型</span>
+        <select name="source_type">
+          <option value="">全部来源</option>
+          {% for option in filter_options.source_types %}
+          <option value="{{ option }}" {% if source_type == option %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        <span>标签</span>
+        <select name="tag">
+          <option value="">全部标签</option>
+          {% for option in filter_options.tags %}
+          <option value="{{ option }}" {% if tag == option %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label><span>开始日期</span><input type="date" name="date_from" value="{{ date_from }}" /></label>
+      <label><span>结束日期</span><input type="date" name="date_to" value="{{ date_to }}" /></label>
+    </div>
+    <label class="checkbox-line"><input type="checkbox" name="rewrite" value="true" {% if rewrite %}checked{% endif %} /> 启用大模型重写</label>
+  </form>
+  <div class="sample-row">
+    {% for sample in samples %}
+    <a class="sample-chip" href="{{ sample.url }}">{{ sample.text }}</a>
+    {% endfor %}
+  </div>
+</section>
+
+{% if answer %}
+<section class="card answer-card">
+  <div class="section-heading">知识助手回答</div>
+  {% if answer.direct_answer %}
+  <div class="answer-summary">
+    <div class="answer-label">直接回答</div>
+    <p>{{ answer.direct_answer }}</p>
+  </div>
+  {% endif %}
+  {% if answer.steps %}
+  <div class="answer-block">
+    <div class="answer-label">建议步骤</div>
+    <ol class="answer-list">
+      {% for step in answer.steps %}
+      <li>
+        <span>{{ step.text }}</span>
+        <span class="muted">{{ ' '.join(step.citation_ids) }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endif %}
+  {% if answer.follow_up_tips %}
+  <div class="answer-block">
+    <div class="answer-label">补充建议</div>
+    <ul class="answer-list compact">
+      {% for tip in answer.follow_up_tips %}
+      <li>{{ tip }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  <div class="answer-body">{% for line in answer.text.split('\n') %}<p>{{ line }}</p>{% endfor %}</div>
+  <div class="tag-row">
+    <span class="pill">模式：{{ answer.query_mode }}</span>
+    <span class="pill">置信度：{{ answer.confidence.level }}</span>
+    {% if answer.rewrite.applied %}<span class="pill accent">已启用模型重写</span>{% endif %}
+  </div>
+  <div class="citation-grid">
+    {% for citation in answer.citations %}
+    <div class="citation-card">
+      <strong>{{ citation.id }} {{ citation.section_title }}</strong>
+      <span>{{ citation.source_name }}</span>
+      <span class="muted">{{ citation.system_name }} · {{ citation.source_type }}</span>
+      <div class="button-row top-gap">
+        {% if citation.detail_url %}<a class="btn btn-ghost small" href="{{ citation.detail_url }}">查看知识片段</a>{% endif %}
+        {% if citation.original_url %}<a class="btn btn-secondary small" href="{{ citation.original_url }}">打开原始手册</a>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="card">
+  <div class="section-heading">命中结果</div>
+  <div class="result-stack">
+    {% for row in results %}
+    <div class="result-item">
+      <div class="result-main">
+        <div class="result-head">
+          <strong>{{ row.section_title }}</strong>
+          <span class="score-badge">{{ '%.2f'|format(row.score) }}</span>
+        </div>
+        <div class="muted">{{ row.system_name }} · {{ row.source_type }} · {{ row.page_hint or '正文' }}</div>
+        <p>{{ row.snippet }}</p>
+      </div>
+      <div class="result-tags">
+        {% for tag_name in row.tags[:5] %}<span class="pill">{{ tag_name }}</span>{% endfor %}
+      </div>
+      <div class="button-row">
+        {% if row.detail_url %}<a class="btn btn-ghost small" href="{{ row.detail_url }}">查看知识片段</a>{% endif %}
+        {% if row.original_url %}<a class="btn btn-secondary small" href="{{ row.original_url }}">打开原始手册</a>{% endif %}
+      </div>
+    </div>
+    {% else %}
+    <div class="empty-state">当前没有命中结果，可以换更短的关键词，或者切换到“手册问答 / 历史案例”模式。</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

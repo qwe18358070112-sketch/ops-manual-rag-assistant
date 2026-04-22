@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero-grid">
+  <div class="card hero-card">
+    <div class="section-heading">知识助手能力</div>
+    <h2>先给结论，再给步骤，再回溯手册和案例</h2>
+    <p>当前版本已经具备资料上传、增量索引、知识问答、原始手册直达、历史案例复盘、专题视图和权限控制，目标不是只做检索，而是给出可直接执行的运维回答。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/app/search">开始问答检索</a>
+      <a class="btn btn-secondary" href="/app/library">进入资料库</a>
+    </div>
+  </div>
+  <div class="card stat-card-grid">
+    {% for card in cards %}
+    <div class="mini-stat">
+      <div class="mini-label">{{ card.label }}</div>
+      <div class="mini-value">{{ card.value }}</div>
+      <div class="mini-hint">{{ card.hint }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel-grid two-col">
+  <div class="card">
+    <div class="section-heading">高频专题</div>
+    <div class="list-stack compact">
+      {% for topic in topic_rows %}
+      <a class="list-item" href="{{ topic.detail_url }}">
+        <div>
+          <strong>{{ topic.tag }}</strong>
+          <div class="muted">{{ topic.count }} 条案例 · 最近 {{ topic.latest_date or '—' }}</div>
+        </div>
+        <span class="pill">查看</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-heading">近期案例</div>
+    <div class="list-stack compact">
+      {% for row in timeline_rows %}
+      <a class="list-item" href="{{ row.detail_url }}">
+        <div>
+          <strong>{{ row.section_title }}</strong>
+          <div class="muted">{{ row.date_start }} ~ {{ row.date_end }} · {{ row.system_name }}</div>
+        </div>
+        <span class="pill">详情</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="panel-grid two-col">
+  <div class="card">
+    <div class="section-heading">资料分析摘要</div>
+    <div class="kv-grid">
+      {% for key, value in analysis.source_type_counts.items() %}
+      <div class="kv-item"><span>{{ key }}</span><strong>{{ value }}</strong></div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-heading">最近访问日志</div>
+    <div class="log-stack">
+      {% for row in recent_logs %}
+      <div class="log-row">
+        <span>{{ row.method }}</span>
+        <span>{{ row.path }}</span>
+        <span>{{ row.status_code }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

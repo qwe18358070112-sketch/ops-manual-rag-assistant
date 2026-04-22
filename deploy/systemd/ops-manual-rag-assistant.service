@@ -1,0 +1,19 @@
+[Unit]
+Description=Ops Manual RAG Assistant
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/lenovo/projects/ops-manual-rag-assistant
+EnvironmentFile=/home/lenovo/projects/ops-manual-rag-assistant/.env
+Environment=OPS_ASSISTANT_HOST=0.0.0.0
+Environment=OPS_ASSISTANT_PORT=8000
+Environment=OPS_ASSISTANT_DATA_DIR=/var/lib/ops-assistant-data
+ExecStart=/home/lenovo/projects/ops-manual-rag-assistant/scripts/start_shared.sh
+Restart=always
+RestartSec=3
+User=lenovo
+Group=lenovo
+
+[Install]
+WantedBy=multi-user.target

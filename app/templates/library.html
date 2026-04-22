@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="panel-grid library-grid">
+  <div class="card">
+    <div class="section-heading">上传并入库</div>
+    <form action="/app/library/upload" method="post" enctype="multipart/form-data" class="form-grid cols-2">
+      <label><span>资料标题</span><input type="text" name="title" required /></label>
+      <label><span>系统名称</span><input type="text" name="system_name" placeholder="例如：视频平台 / 综治中心" required /></label>
+      <label>
+        <span>来源类型</span>
+        <select name="source_type" required>
+          {% for value, label in source_type_choices %}
+          <option value="{{ value }}">{{ label }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label><span>标签</span><input type="text" name="tags" placeholder="逗号分隔，例如：视频平台,轮询助手,值班" /></label>
+      <label><span>开始日期</span><input type="date" name="date_start" /></label>
+      <label><span>结束日期</span><input type="date" name="date_end" /></label>
+      <label class="full"><span>备注说明</span><textarea name="notes" rows="3" placeholder="可填写用途、场景、版本、说明"></textarea></label>
+      <label class="full upload-field"><span>选择资料文件</span><input type="file" name="file" accept=".docx,.pdf,.xlsx,.txt" required /></label>
+      <label class="checkbox-line full"><input type="checkbox" name="index_now" checked /> 上传后立即执行增量索引</label>
+      <div class="full button-row">
+        <button class="btn btn-primary" type="submit">上传、保存并归档</button>
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <div class="section-heading">资料库分析</div>
+    <div class="stat-card-grid compact-grid">
+      <div class="mini-stat"><div class="mini-label">资料总数</div><div class="mini-value">{{ analysis.totals.documents }}</div></div>
+      <div class="mini-stat"><div class="mini-label">已索引</div><div class="mini-value">{{ analysis.totals.indexed }}</div></div>
+      <div class="mini-stat"><div class="mini-label">待处理</div><div class="mini-value">{{ analysis.totals.pending }}</div></div>
+      <div class="mini-stat"><div class="mini-label">异常</div><div class="mini-value">{{ analysis.totals.errors }}</div></div>
+    </div>
+    <div class="chip-board">
+      {% for row in system_rows[:8] %}<span class="pill wide">{{ row.name }} · {{ row.count }}</span>{% endfor %}
+    </div>
+    <div class="chip-board">
+      {% for row in tag_rows[:10] %}<span class="pill">{{ row.name }} · {{ row.count }}</span>{% endfor %}
+    </div>
+    <div class="button-row top-gap">
+      <form action="/app/library/rebuild" method="post"><button class="btn btn-secondary" type="submit">执行全量重建</button></form>
+      <a class="btn btn-ghost" href="/app/library/export?kind=documents&format=csv">导出资料 CSV</a>
+      <a class="btn btn-ghost" href="/app/library/export?kind=documents&format=json">导出资料 JSON</a>
+      <a class="btn btn-ghost" href="/app/library/export?kind=analysis&format=json">导出分析报告</a>
+    </div>
+  </div>
+</section>
+
+<section class="panel-grid library-grid">
+  <div class="card">
+    <div class="section-heading">迁移与共享</div>
+    <div class="list-stack compact">
+      <div class="list-item plain"><strong>数据目录</strong><span>{{ deploy_info.data_dir }}</span></div>
+      <div class="list-item plain"><strong>元数据库</strong><span>{{ deploy_info.library_db_path }}</span></div>
+      <div class="list-item plain"><strong>访问日志</strong><span>{{ deploy_info.access_log_path }}</span></div>
+      <div class="list-item plain"><strong>共享入口</strong><span>{{ deploy_info.share_url }}</span></div>
+      <div class="list-item plain"><strong>权限模式</strong><span>{% if deploy_info.auth_enabled %}管理员控制已开启{% else %}当前为本地开放模式{% endif %}</span></div>
+    </div>
+    <div class="button-row top-gap">
+      <a class="btn btn-primary" href="/app/library/bundle-export">导出迁移包 ZIP</a>
+    </div>
+    <p class="muted top-gap">迁移包会打包资料文件、元数据和标签信息。换电脑或换服务器后，导入迁移包并执行索引重建即可恢复资料库。</p>
+  </div>
+  <div class="card">
+    <div class="section-heading">导入迁移包</div>
+    <form action="/app/library/bundle-import" method="post" enctype="multipart/form-data" class="form-grid">
+      <label class="full upload-field"><span>选择迁移包 ZIP</span><input type="file" name="bundle_file" accept=".zip" required /></label>
+      <label class="checkbox-line full"><input type="checkbox" name="replace_existing" /> 导入前清空当前已上传资料</label>
+      <div class="button-row full">
+        <button class="btn btn-secondary" type="submit">导入、保存并重建索引</button>
+      </div>
+    </form>
+    <p class="muted top-gap">建议在新电脑或新服务器上使用单独的数据目录，导入迁移包后再开启共享访问和管理员认证。</p>
+  </div>
+</section>
+
+<section class="card">
+  <div class="section-heading">资料筛选与归纳</div>
+  <form action="/app/library" method="get" class="form-grid cols-5">
+    <label><span>关键词</span><input type="text" name="query" value="{{ filters.query }}" placeholder="标题 / 原文件名 / 备注" /></label>
+    <label><span>来源组</span><select name="source_group"><option value="">全部</option>{% for option in filter_options.source_groups %}<option value="{{ option }}" {% if filters.source_group == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>来源类型</span><select name="source_type"><option value="">全部</option>{% for option in filter_options.source_types %}<option value="{{ option }}" {% if filters.source_type == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>系统</span><select name="system_name"><option value="">全部</option>{% for option in filter_options.system_names %}<option value="{{ option }}" {% if filters.system_name == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>状态</span><select name="status"><option value="">全部</option><option value="indexed" {% if filters.status == 'indexed' %}selected{% endif %}>indexed</option><option value="uploaded" {% if filters.status == 'uploaded' %}selected{% endif %}>uploaded</option><option value="error" {% if filters.status == 'error' %}selected{% endif %}>error</option></select></label>
+    <div class="button-row full"><button class="btn btn-primary" type="submit">筛选</button><a class="btn btn-ghost" href="/app/library">重置</a></div>
+  </form>
+</section>
+
+<section class="card">
+  <div class="section-heading">资料列表</div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>资料</th><th>分类</th><th>标签</th><th>索引状态</th><th>时间范围</th><th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in documents %}
+        <tr>
+          <td>
+            <strong>{{ row.title }}</strong>
+            <div class="muted">{{ row.original_filename }} · {{ row.file_type }} · {{ row.size_label }}</div>
+            <div class="muted">{{ row.notes or '无备注' }}</div>
+          </td>
+          <td>
+            <div>{{ row.system_name }}</div>
+            <div class="muted">{{ row.source_group }} / {{ row.source_type }}</div>
+          </td>
+          <td>
+            <div class="tag-row">{% for tag in row.tags[:6] %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+          </td>
+          <td>
+            <span class="status-badge {% if row.status == 'indexed' %}success{% elif row.status == 'error' %}danger{% endif %}">{{ row.status }}</span>
+            <div class="muted">sections {{ row.section_count }} · chunks {{ row.chunk_count }}</div>
+            {% if row.last_error %}<div class="danger-text">{{ row.last_error }}</div>{% endif %}
+          </td>
+          <td>{{ row.date_range }}</td>
+          <td>
+            <div class="action-stack">
+              <form action="/app/library/documents/{{ row.doc_id }}/reindex" method="post"><button class="btn btn-ghost small" type="submit">重新索引</button></form>
+              <a class="btn btn-ghost small" href="/app/library/documents/{{ row.doc_id }}/download">下载原件</a>
+            </div>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" class="empty-state">当前筛选条件下没有资料。</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel-grid two-col">
+  <div class="card">
+    <div class="section-heading">访问日志</div>
+    <div class="log-stack">
+      {% for row in recent_logs %}
+      <div class="log-row"><span>{{ row.method }}</span><span>{{ row.path }}</span><span>{{ row.status_code }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-heading">时间分布</div>
+    <div class="list-stack compact">
+      {% for row in timeline_rows %}
+      <div class="list-item plain"><strong>{{ row.name }}</strong><span>{{ row.count }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

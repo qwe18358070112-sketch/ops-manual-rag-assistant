@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card detail-card">
+  <div class="section-heading">手册章节详情</div>
+  <h2>{{ detail.section_title }}</h2>
+  <div class="muted">{{ detail.title }} · {{ detail.system_name }} · {{ detail.source_type }}</div>
+  <div class="muted top-gap">原始手册：{{ detail.source_file }}</div>
+  <div class="tag-row top-gap">{% for tag in detail.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+  <div class="detail-body">{% for line in detail.content.split('\n') %}<p>{{ line }}</p>{% endfor %}</div>
+  <div class="button-row top-gap">
+    <a class="btn btn-primary" href="{{ detail.search_url }}">以当前章节进入问答</a>
+    <a class="btn btn-secondary" href="{{ detail.original_url }}">打开原始手册</a>
+    <a class="btn btn-ghost" href="/app/search">返回问答</a>
+  </div>
+</section>
+{% endblock %}

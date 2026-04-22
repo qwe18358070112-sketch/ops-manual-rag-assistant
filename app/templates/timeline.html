@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <div class="section-heading">时间轴筛选</div>
+  <form action="/app/timeline" method="get" class="form-grid cols-6">
+    <label><span>系统</span><select name="system_name"><option value="">全部系统</option>{% for option in filter_options.system_names %}<option value="{{ option }}" {% if filters.system_name == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>来源</span><select name="source_type"><option value="">全部来源</option>{% for option in filter_options.source_types %}<option value="{{ option }}" {% if filters.source_type == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>标签</span><select name="tag"><option value="">全部标签</option>{% for option in filter_options.tags %}<option value="{{ option }}" {% if filters.tag == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+    <label><span>开始日期</span><input type="date" name="date_from" value="{{ filters.date_from }}" /></label>
+    <label><span>结束日期</span><input type="date" name="date_to" value="{{ filters.date_to }}" /></label>
+    <label><span>数量</span><input type="number" min="1" max="100" name="limit" value="{{ filters.limit }}" /></label>
+    <div class="button-row full"><button class="btn btn-primary" type="submit">查看时间轴</button></div>
+  </form>
+</section>
+<section class="timeline-stack">
+  {% for row in entries %}
+  <article class="card timeline-item">
+    <div class="timeline-meta">{{ row.date_start }} ~ {{ row.date_end }} · {{ row.system_name }} · {{ row.source_type }}</div>
+    <h3>{{ row.section_title }}</h3>
+    <p>{{ row.summary }}</p>
+    <div class="tag-row">{% for tag in row.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+    <div class="button-row top-gap"><a class="btn btn-secondary" href="{{ row.detail_url }}">案例详情</a><a class="btn btn-ghost" href="{{ row.search_url }}">联动到问答</a></div>
+  </article>
+  {% else %}
+  <div class="card empty-state">当前没有符合条件的历史案例。</div>
+  {% endfor %}
+</section>
+{% endblock %}

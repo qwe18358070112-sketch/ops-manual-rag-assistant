@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page_title }} · {{ app_title }}</title>
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">OPS</div>
+        <div>
+          <div class="eyebrow">政企运维知识库问答助手</div>
+          <div class="brand-title">{{ page_title }}</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="nav-link {% if active_nav == 'dashboard' %}active{% endif %}" href="/app">总览</a>
+        <a class="nav-link {% if active_nav == 'search' %}active{% endif %}" href="/app/search">问答检索</a>
+        <a class="nav-link {% if active_nav == 'library' %}active{% endif %}" href="/app/library">资料库</a>
+        <a class="nav-link {% if active_nav == 'timeline' %}active{% endif %}" href="/app/timeline">时间轴</a>
+        <a class="nav-link {% if active_nav == 'topics' %}active{% endif %}" href="/app/topics">专题</a>
+      </nav>
+      <div class="toolbar">
+        {% if auth_enabled %}
+          {% if authenticated %}
+            <span class="status-badge success">管理员已登录</span>
+            <form action="/logout" method="post"><button class="btn btn-ghost" type="submit">退出</button></form>
+          {% else %}
+            <a class="btn btn-ghost" href="/login?next=/app/library">登录管理</a>
+          {% endif %}
+        {% else %}
+          <span class="status-badge">本地模式</span>
+        {% endif %}
+      </div>
+    </header>
+
+    <main class="page-shell">
+      {% if message %}
+      <section class="notice success">{{ message }}</section>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
